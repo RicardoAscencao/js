@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Strings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Tipo de Dados - Strings</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+        /* Strings conjunto de caracteres */
+        let nome = "Nuno";
+        let apelido = 'Ascenção';
+        let nacionalidade = 'Portuguesa'; //backticks, templates literals - ES6
+
+        //ES5
+        let nomeCompleto = nome + " " + apelido
+        //let frase = "<h3> O Sr.ª " + nome + " " + apelido +" tem nacionalidade " + nacionalidade + ".</h3>"
+        let frase = "<h3> O Sr.º";
+        frase += nome + " ";
+        frase += apelido + "tem nacionalidade";
+        frase += nacionalidade + ".</h3>";
+
+
+        // ES6 - tmeplate literal - multiline strings
+        let outraFrase = `
+            <h2> O Sr.º ${nome} ${apelido} - ${5 * 8} </h2>
+            <h3> Tem a nacionalidade ${nacionalidade}</h3>
+            <hr>
+        `;
+
+        let texto = `
+            <h1>${'Olá ' + nomeCompleto }</h1>
+            <p>Numeros de caracteres : ${nomeCompleto.length}</p>
+            <p>${nomeCompleto.toUpperCase()}</p>
+            <p>${nomeCompleto.toLowerCase()}</p>
+            <p>${nome.charAt(2)}</p>
+            <p>${nomeCompleto.indexOf('ã')}</p>
+            <p>${nomeCompleto.search('x')}</p>
+        `;
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

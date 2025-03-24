@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - 2 Exercício Repetição</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JAVASCRIPT - 2 Exercício Repetição</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+
+    let texto = ' ';
+    let numero = Number(prompt("Digite um número para ver a tabuada:"));
+
+
+    for (let i = 1; i <= 10; i++) {
+        texto += `${numero} x ${i} = ${numero * i} <br>` ;
+    }
+       
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

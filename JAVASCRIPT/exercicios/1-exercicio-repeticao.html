@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - 1 Exercício Repetição</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JAVASCRIPT - 1 Exercício Repetição</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    let texto = ' ';
+    let num1 = Number(prompt("Indique o primeiro número:"));
+    let num2 = Number(prompt("Indique o segundo número:"));
+   
+    
+    let soma = 0;
+    let contador = 0;
+    let menor = num1 < num2 ? num1 : num2; 
+    let maior = num1 > num2 ? num1 : num2;
+    console.log("menor; " + menor, "maior; " + maior);
+
+    for (menor; menor < maior; menor++) {
+        texto += `<p>${menor}</p>`; 
+        soma += menor;
+        contador++; 
+    } 
+    
+    texto += `
+    <h3> A soma dos números intermédios entre ${num1} e ${num2} é ${soma}</h3>
+    <p> Foram somados : ${contador} números</p>
+    `;
+
+        
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

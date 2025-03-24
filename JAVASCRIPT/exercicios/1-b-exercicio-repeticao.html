@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - 1 Exercício Repetição</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JAVASCRIPT - 1 Exercício Repetição</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    let texto = ' ';
+    /*  //demosntreação strict equality
+     let x = 5;
+     let y = '5';
+
+    console.log('comparação:' , x == y); //true
+    console.log('comparação (strict equality): ', x === y); //false */
+
+    //Operador ternario (if)
+
+    let num1 = Number(prompt("Indique o primeiro número:"));
+    let num2 = Number(prompt("Indique o segundo número:"));
+   
+    let menor = num1 < num2 ? num1 : num2; 
+    let maior = num1 > num2 ? num1 : num2;
+
+
+    while (menor < maior) {
+        if (menor % 2 == 0) {
+            texto += `<p>${menor}</p>`;
+        }
+        menor++;
+    } 
+    
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>
