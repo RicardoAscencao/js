@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - 7 Exercicio Function</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JAVASCRIPT - 7 Exercício Function</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    let texto = ' ';
+
+    //Criar um número aleatório
+    /* Math.random() - gerar um número entre 0 e 1 */
+    /* 
+    gerar entre 0 (zero) e outro número
+    Math.randon() * num;
+    
+    gerar números entre o intervalo de valores
+    (30-50)
+
+    Math.random()
+    0 - 1
+    *20
+    0 - 20
+
+    +30
+    30 - 50
+
+    vi, vf
+    Math.random () * (vf -vi) + vi ------ Math.random() * (50 - 30) + 30
+    Math.round( Math.random() * (vf - vi) + vi )
+    */
+
+    let numero = Math.round(Math.random() * 20);
+    let tentativas = 0;
+
+
+    let numeroInserido = Number(prompt("Tente adivinhar o número entre 0 e 20:"));
+
+    while (numeroInserido !== numero) {
+        if (numeroInserido > numero) {
+            numeroInserido = Number(prompt(`O número ${numeroInserido} é maior. Tente novamente!`));
+        } else {
+            numeroInserido = Number(prompt(`O número ${numeroInserido} é menor. Tente novamente!`));
+              
+        }
+        tentativas++;  
+    } 
+
+    Math.round( Math.random() * (vf - vi) + vi )
+   
+    texto = `<b>Parabéns!</b> <br>
+    Você acertou o número ${numero} em ${tentativas} tentativas.`;
+
+     
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

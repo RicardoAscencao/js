@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Scope de variáveis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Scope de variáveis</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    
+    let a = 3;
+    console.log('a: ', a);
+
+    if(true) {
+        console.log('a dentro do if: ', a);
+
+        let b = 5; // variável local ao bloco
+        console.log('b dentro do if: ', b);
+
+    }
+
+    // console.log('b fora do if: ', b);
+       
+    let num = 10;
+    num = 3;
+    console.log('num: ', num);
+
+    const pi = 3.14;
+    console.log('pi:', pi);
+
+    const arr = [1,2,3];
+    console.log('arr:', arr);
+    arr.push(4);
+    console.log('arr:', arr);
+
+
+    //escrever dentro da section output
+    let output = document.getElementById('output');
+    output.innerHTML = 'Hello World';
+
+    </script>
+
+</body>
+</html>

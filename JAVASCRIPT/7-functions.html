@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Funções</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Função</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    
+    let texto = '';
+
+    // Função "simples"
+    function dizerOla(){
+        texto += `<hr>`;
+        texto += `<p> Olá Nuno </p>`;
+        texto += `<p> Bem vindo ao JavaScript </p>`;
+        texto += `<hr>`;
+    }
+    dizerOla ();
+
+    // Funções com parametros
+    function dizerOlaNome(nome ='Mário', apelido='Silva'){
+        texto += `<hr>`;
+        texto += `<p> Olá <b>${nome} ${apelido}</b></p>`;
+        texto += `<p> Bem vindo ao JavaScript </p>`;
+        texto += `<hr>`;
+    }
+    dizerOlaNome ('Nuno', 'Lopes');
+    dizerOlaNome ('Ana');
+    dizerOlaNome ('Bruno');
+    dizerOlaNome ();
+
+    // funções que retornam valores
+    function calcularArea (altura = 1, comprimento = 1) {
+        let area =  altura * comprimento;
+        return area;
+    }
+    console.log(calcularArea(5, 9));
+    console.log(calcularArea(8, 3));
+
+    let altura = Number(prompt('Qual a altura?'));
+    let comprimento = Number(prompt('Qual a comprimento?'));
+
+    texto += `
+        <h1> Rectângulo de ${altura} altura e de ${comprimento} comprimento, tem uma área de ${calcularArea(altura, comprimento)} </h1>
+    `;
+
+    //escrever dentro da section output
+    let output = document.getElementById('output');
+    output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>
