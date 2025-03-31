@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Objects</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Objects</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+
+        let texto = '';
+
+       // Criação de objectos
+       // Object Literal
+
+       let rooms = 500;
+       let booked = 123;
+
+       const hotel = {
+        name: 'Ritz',
+        rooms: 200,
+        booked: 75,
+        pool: true,
+        typeOfRooms: ['suite', 'single', 'twins'],
+        check: function(){
+            return this.rooms - this.booked;
+        }
+       } 
+
+       const outroHotel = {
+        name: 'Evolution',
+        rooms: 100,
+        booked: 55,
+        pool: false,
+        typeOfRooms: ['suite', 'single', 'twins'],
+        check: function(){
+            return this.rooms - this.booked;
+        }
+       } 
+
+       console.log(hotel.name);
+       hotel.name = 'VIP';
+       console.log(hotel.name);
+       console.log(hotel.check());
+
+       console.log(outroHotel.name);
+       console.log(outroHotel.check());
+
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html> 

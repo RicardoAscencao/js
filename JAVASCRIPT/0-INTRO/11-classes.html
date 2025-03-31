@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Objects</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Objects</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+
+        let texto = '';
+
+       // Criação de objectos - ES6
+       // Object Constructor
+
+       class Hotel {
+
+        // propriedades
+        constructor(nome, quartos, reservas){
+            // Propriedades do Objecto
+            this.name = nome;
+            this.rooms = quartos;
+            this.bookings = reservas;
+            }
+        // Metodos
+        check(){
+            return this.rooms - this.bookings;
+        }
+       }
+
+       let ritz = new Hotel('Ritz', 300, 45);
+       let vip = new Hotel('VIP', 250, 75);
+       let evolution = new Hotel('Evolution', 350, 95);
+
+       let hoteis = [ritz, vip, evolution];
+
+       for (const hotel of hoteis) {
+        texto += `
+        <hr>
+            <h2>Nome do Hotal: ${hotel.name}</h2>
+            <h2>Quartos: ${hotel.rooms}</h2>
+            <h2>Vagas: ${hotel.check()}</h2>
+        <hr>    
+       `;
+       }
+
+       
+
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html> 

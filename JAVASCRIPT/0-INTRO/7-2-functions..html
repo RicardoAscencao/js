@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Funções</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Função</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+    
+    let texto = '';
+
+    dizerOla(); /// Hoisting
+    // function  declaration
+    function dizerOla(){
+        texto += `<hr>`;
+        texto += `<p> Olá Nuno </p>`;
+        texto += `<p> Bem vindo ao JavaScript </p>`;
+        texto += `<hr>`;
+    }
+
+   /*  function (){ // função anonima
+        // qualquer
+    } */
+
+    // function Expression
+    //dizerOla2(); // não faz o hoisting
+    let dizerOla2 = function(){
+        texto += `<hr>`;
+        texto += `<p> Olá Nuno </p>`;
+        texto += `<p> Bem vindo ao JavaScript </p>`;
+        texto += `<hr>`;
+
+    }
+    dizerOla2();
+
+    // Arrow Functions - ES6 - function expression
+    /*     function calcularCircunferencia(raio=1){
+        let perimetro = 2 * Math.PI * raio;
+        return perimetro;
+    }
+    console.log(calcularCircunferencia(5)); */
+
+    let calcularCircunferencia = (raio) => 2 * Math.PI * raio;
+    console.log(calcularCircunferencia(5));
+
+    let calcularCircunferencia2 = raio => {
+        let perimetro = 2 * Math.PI * raio;
+        return perimetro;
+    }
+    console.log(calcularCircunferencia2(5));
+
+    //escrever dentro da section output
+    let output = document.getElementById('output');
+    output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

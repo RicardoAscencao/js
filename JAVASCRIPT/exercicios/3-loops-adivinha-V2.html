@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - 3 Exercício Loop Adivinha</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JAVASCRIPT - 3 Exercício Loop Adivinha</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+    <script src="../js/biblioteca.js"></script>
+
+    <script>
+    let texto = ' ';
+
+    let numero = randomIntBetweenNumbers(0, 20);
+
+
+    let numeroInserido = Number(prompt("Tente adivinhar o número entre 0 e 20:"));
+
+    while (numeroInserido !== numero) {
+        if (numeroInserido > numero) {
+            numeroInserido = Number(prompt(`O número ${numeroInserido} é maior. Tente novamente!`));
+        } else {
+            numeroInserido = Number(prompt(`O número ${numeroInserido} é menor. Tente novamente!`));
+              
+        }
+        tentativas++;  
+    } 
+
+   
+    texto = `<b>Parabéns!</b> <br>
+    Você acertou o número ${numero} em ${tentativas} tentativas.`;
+
+     
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Array Methods</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Array Methods ES6</h1>
+    <main>
+        <section id="output"></section>
+    </main>
+
+    <script>
+
+        let texto = '';
+
+        // metodos de arrays
+        let numeros = [1,2,3,4,5];
+        texto += `<p>Números: ${numeros}`;
+
+        //criar com duplicados
+        let duplos = [];    
+        for (let i = 0; i < numeros.length; i++){ /// código com uma abordagem imperativa
+            duplos.push( numeros[i] * 2)
+        } texto += `<hr><p> Duplos ${duplos}`;
+
+        // criar array de triplos
+        let triplos = [];
+        for (const num of numeros) {
+            triplos.push (num * 3);
+        }    
+        texto += `<hr><p> Triplos:  ${triplos}`;
+
+        /// criar quadruplos
+        let quadruplos = [];
+        /* numeros.forEach( function(num) {
+            quadruplos.push(num * 4)
+        }) */
+        numeros.forEach(num => quadruplos.push(num * 4)); // Código com uma abordagem declarativa
+        texto += `<hr><p> Quadruplos:  ${quadruplos}`;
+
+        /// Alguns metodos introduzidos em ES6, metodos mais declarativos, não fazem mutação a array original.
+
+        //criar uma array de potencias
+        let potencias = numeros.map( n => n**2);    
+        console.log(potencias);
+        console.log(numeros);
+
+        // filter()
+        let cervejas = [
+            'Sagres',
+            'Super Bock',
+            'Guiness',
+            'Hrineken',
+            'Brahma',
+            'Franciskanner', // trailing comma - ES6
+        ];
+        console.log(cervejas);
+
+        // lista cervejas com mais de 6 letras
+        let cervejaComMaisLetras = cervejas.filter( cerveja => (cerveja.length > 6) && (cerveja !== 'Super Bock'));
+        console.log('teste', cervejaComMaisLetras);
+        console.log(cervejas);
+
+        // cervejas sem Sagres
+        let cerjevasSemSagres = cervejas.filter(cerveja => cerveja !== 'Sagres');
+        console.log(cerjevasSemSagres);
+        console.log(cervejas);
+
+        // Metodos: map(), filter(), find(), every(), some(), reduce(), ...
+
+
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        output.innerHTML = texto;
+
+    </script>
+
+</body>
+</html>
