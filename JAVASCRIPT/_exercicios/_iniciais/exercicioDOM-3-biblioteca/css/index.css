@@ -50,3 +50,25 @@ section.grid article{
 section.grid article > * {
     margin: .8em 0;
 }
+
+#filtros {
+    margin-bottom: 20px;
+  }
+  
+  .livro {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: background 0.3s;
+  }
+  
+  .livro.lido {
+    background-color: #d4edda;
+    text-decoration: line-through;
+  }
+  
+  button {
+    margin-right: 8px;
+    margin-top: 10px;
+  }

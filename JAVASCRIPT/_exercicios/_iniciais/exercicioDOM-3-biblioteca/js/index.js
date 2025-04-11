@@ -19,3 +19,31 @@ function showBooks(arrayBooks) {
     `;
     })
 }
+
+let filtroLidos = document.getElementById('filtroLidos');
+let filtroTexto = document.getElementById('filtroTexto');
+
+filtroLidos.addEventListener('change', applyFilters);
+filtroTexto.addEventListener('input', applyFilters);
+
+function applyFilters() {
+  let filtroStatus = filtroLidos.value; // 'todos', 'lidos' ou 'nao-lidos'
+  let filtroPesquisa = filtroTexto.value.toLowerCase();
+
+  // Filtra os livros conforme o filtro de leitura e de texto
+  let livrosFiltrados = livros.filter(book => {
+    const correspondeTexto =
+      book.title.toLowerCase().includes(filtroPesquisa) ||
+      book.author.toLowerCase().includes(filtroPesquisa);
+
+    const correspondeStatus =
+      filtroStatus === 'todos' ||
+      (filtroStatus === 'lidos' && book.alreadyRead) ||
+      (filtroStatus === 'nao-lidos' && !book.alreadyRead);
+
+    return correspondeTexto && correspondeStatus;
+  });
+
+  // Exibe os livros filtrados
+  showBooks(livrosFiltrados);
+}
