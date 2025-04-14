@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT - Dataset Object</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>JS - Dataset Object</h1>
+    <main>
+        <div id="btns">
+        <button data-id="12345" data-name="Nuno" data-apelido="Ascenção">
+            Nuno
+        </button>
+        <button data-id="345" data-name="Ricardo" data-apelido="Lopes">
+            Ricardo
+        </button>
+        <button data-id="123" data-name="Bruno" data-apelido="Silva">
+            Bruno
+        </button>
+    </div>
+        <section id="output"></section>
+    </main>
+
+    <script>
+
+        //escrever dentro da section output
+        let output = document.getElementById('output');
+        let btn = document.querySelector('button');
+        let btns = document.querySelector('#btns');
+
+        btn.addEventListener('click', aoClicar, false);
+
+        function aoClicar(event){
+            console.log(event.target.dataset);
+        }
+
+
+
+        output.innerHTML = '';
+
+    </script>
+
+</body>
+</html>

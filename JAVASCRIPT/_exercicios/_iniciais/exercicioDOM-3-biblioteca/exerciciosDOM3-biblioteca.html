@@ -7,16 +7,16 @@
   </head>
   <body>
     <h1>A minha Lista de Livros</h1>
-    <section id="filtros">
-      <label>
-        Mostrar:
-        <select id="filtroLidos">
-          <option value="todos">Todos</option>
-          <option value="lidos">Lidos</option>
-          <option value="nao-lidos">Não Lidos</option>
-        </select>
-      </label>
-      <input type="text" id="filtroTexto" placeholder="Filtrar por título ou autor" />
+    <section class="filters" id="filters">
+      <div>
+        <button class="btn" id="allBtn">All</button>
+        <button class="btn" id="readBtn">Read</button>
+        <button class="btn" id="notreadBtn">Not read</button>
+      </div>
+      <div>
+        <label for="searchTxt">Search Title</label>
+        <input type="search" class="searchTxt" id="searchTxt"/>
+      </div>
     </section>
     
     <section class="grid" id="grid">

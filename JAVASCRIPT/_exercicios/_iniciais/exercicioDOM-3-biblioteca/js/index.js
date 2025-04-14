@@ -1,13 +1,62 @@
 
-console.log(livros);
-
+// definição das variáveis locais
 let grid = document.getElementById('grid');
+let filters = document.getElementById('filters');
 
 showBooks(getBooks());
-//showBooks(getReadBooks());
-//showBooks(getnotReadBooks());
+
+//Eventos da aplicação
+filters.addEventListener('click', filterEvents, false);
+filters.addEventListener('input', filterEvents, false);
+grid.addEventListener('click', gridEvents, false);
+
+//Listeners
+function filterEvents(event){
+  let element = event.target;
+
+  if (element.id === 'allBtn') {
+    showBooks(getBooks());
+  }
+
+  if (element.id === 'readBtn') {
+    showBooks(getReadBooks());
+  }
+
+  if (element.id === 'notReadBtn') {
+    showBooks(getNoReadBooks());
+  }
+
+  if ((element.id === 'searchTxt') && (event.type === 'input')) {
+    let text = element.value.toLowerCase();
+    showBooks(getBooksByTitle(text))
+  }
+}
+
+function gridEvents(event){
+  
+  if ((event.target.nodeName === 'P') && (event.target.textContent.search('✅') > -1) ){
+    showBooks(getReadBooks());
+  }
+
+  if ((event.target.nodeName === 'P') && (event.target.textContent.search('❌') > -1) ){
+    showBooks(getNoReadBooks());
+  }
+
+  if (event.target.dataset.type === 'deleteBtn'){
+    showBooks(deleteBook(event.target.dataset.idbook));
+  }
+}
+
+
+
+// Business Logic
+// console.log(livros);
+showBooks(getBooks());
 
 function showBooks(arrayBooks) {
+
+  grid.innerHTML = '';
+
     arrayBooks.map(book => {
     grid.innerHTML += `
     <article>
@@ -15,35 +64,9 @@ function showBooks(arrayBooks) {
         <h2>${book.author}</h2>
         <img src="livros/${book.imageUrl}" alt="${book.title}">
         <p>AlreadyRead: ${book.alreadyRead ? '✅' : '❌'} </p>
+        <button class='btn' data-type='deleteBtn' data-idbook=${book.id}> Delete </button>
+        <button class='btn' data-type='editBtn'  data-idbook=${book.id}> Edit </button>
     </article>
     `;
     })
-}
-
-let filtroLidos = document.getElementById('filtroLidos');
-let filtroTexto = document.getElementById('filtroTexto');
-
-filtroLidos.addEventListener('change', applyFilters);
-filtroTexto.addEventListener('input', applyFilters);
-
-function applyFilters() {
-  let filtroStatus = filtroLidos.value; // 'todos', 'lidos' ou 'nao-lidos'
-  let filtroPesquisa = filtroTexto.value.toLowerCase();
-
-  // Filtra os livros conforme o filtro de leitura e de texto
-  let livrosFiltrados = livros.filter(book => {
-    const correspondeTexto =
-      book.title.toLowerCase().includes(filtroPesquisa) ||
-      book.author.toLowerCase().includes(filtroPesquisa);
-
-    const correspondeStatus =
-      filtroStatus === 'todos' ||
-      (filtroStatus === 'lidos' && book.alreadyRead) ||
-      (filtroStatus === 'nao-lidos' && !book.alreadyRead);
-
-    return correspondeTexto && correspondeStatus;
-  });
-
-  // Exibe os livros filtrados
-  showBooks(livrosFiltrados);
 }

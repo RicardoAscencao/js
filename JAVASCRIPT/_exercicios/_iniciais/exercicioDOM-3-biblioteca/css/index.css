@@ -15,9 +15,8 @@ img {
 }
 
 body > h1 {
-    margin: 1em 0;
-    border-bottom: 2px solid gray;
-    padding: 1em;
+    margin: 0.5em 0;
+    padding: 0.2em;
 }
 
 /* section.grid {
@@ -51,24 +50,28 @@ section.grid article > * {
     margin: .8em 0;
 }
 
-#filtros {
-    margin-bottom: 20px;
-  }
-  
-  .livro {
-    border: 1px solid #ccc;
-    padding: 12px;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    transition: background 0.3s;
-  }
-  
-  .livro.lido {
-    background-color: #d4edda;
-    text-decoration: line-through;
-  }
-  
-  button {
-    margin-right: 8px;
-    margin-top: 10px;
-  }
+.btn {
+    padding: 0.5em 1em;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+section.filters{
+    background-color: lightgreen;
+    padding: 2em;
+    margin-bottom: 1em;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    font-size: 1.2rem;
+}
+
+input.searchTxt {
+    padding: 0.5em;
+    outline: nome;
+}
+
