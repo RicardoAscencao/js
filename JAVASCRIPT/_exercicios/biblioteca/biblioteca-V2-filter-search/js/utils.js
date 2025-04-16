@@ -13,12 +13,13 @@ const getReadBooks = () => livros.filter(livro => livro.alreadyRead === true);
 /// metodo para mostrar livros não lidos
 const getNoReadBooks = () => livros.filter(livro => livro.alreadyRead === false);
 
-/// pesquisa por titulo
+/// pesquisa por titulo e autor
 
 /// const getBooksByTitle = (text) => livros.filter( livro => livro.title.toLowerCase().search(text) > -1) ;
 const getBooksByTitle = (text) => livros.filter( livro => {
     let title = livro.title.toLowerCase();
-    return title.search(text) > -1
+    let author = livro.author.toLowerCase();
+    return (author.search(text) > -1 ) ||title.search(text) > -1
 
 });
 
