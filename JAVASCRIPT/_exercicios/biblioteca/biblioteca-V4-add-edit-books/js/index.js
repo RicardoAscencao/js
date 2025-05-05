@@ -1,11 +1,23 @@
+import {showPopup, closePopup} from './dom-utils.js';
+import {getBooks,getReadBooks , getNotReadBooks, getBooksByAuthorTitle, deleteBook, addBook, getBooksById, } from './data-utils.js';
+import { Book } from './data.js';
 
 /// Definição das variáveis locais
-
 let grid = document.getElementById('grid');
 let filters = document.getElementById('filters');
 let popup = document.getElementById('popup');
 
-showBooks(getBooks());
+/// Definição das variáveis do Form
+let addEditForm = document.querySelector('.addEditForm');
+let form = addEditForm.querySelector('form');
+let title = form.title;
+let author = form.author;
+let alreadyRead = form.alreadyRead;
+let imageUrl = form.imageUrl;
+let imageUrlGr = form.imageUrlGr;
+let selectorBook;
+let updateBookBtn = document.querySelector('#updateBookBtn');
+let addBookBtn = document.querySelector('#addBookBtn');
 
 /// Eventos da aplicação
 
@@ -14,48 +26,110 @@ filters.addEventListener('input', filterEvents, false);
 grid.addEventListener('click', gridEvents, false);
 popup.addEventListener('click', closePopup, false);
 
+/// Submit do Form
+addBookBtn.addEventListener('click', addBookForm, false);
+updateBookBtn.addEventListener('click', updateBookForm, false);
+
+
 /// Listeners
 
-function filterEvents(event){
-  let element = event.target;
+function filterEvents( {target:{id, value}, type}){
 
-  if (element.id === 'allBtn') {
+
+  if (id === 'allBtn') {
     showBooks(getBooks());
   }
 
-  if (element.id === 'readBtn') {
+  if (id === 'readBtn') {
     showBooks(getReadBooks());
   }
 
-  if (element.id === 'notReadBtn') {
+  if (id === 'notReadBtn') {
     showBooks(getNoReadBooks());
   }
 
-  if ((element.id === 'searchTxt') && (event.type === 'input')) {
-    let text = element.value.toLowerCase();
-    showBooks(getBooksByTitle(text))
+  if ((id === 'searchTxt') && (type === 'input')) {
+    let text = value.toLowerCase();
+    showBooks(getBooksByAuthorTitle(text))
+  }
+
+  if (id === 'showForm'){
+    addEditForm.classList.toggle('open');
+    addBookBtn.classList.add('hide');
+    updateBookBtn.classList.remove('hide');
   }
 
 }
 
-function gridEvents(event){
+function gridEvents({target:{nodeName, textContent, dataset:{type, popup, idbook}}}){
+
   
-  if ((event.target.nodeName === 'P') && (event.target.textContent.search('✅') > -1) ){
+  if ((nodeName === 'P') && (textContent.search('✅') > -1) ){
     showBooks(getReadBooks());
   }
 
-  if ((event.target.nodeName === 'P') && (event.target.textContent.search('❌') > -1) ){
+  if ((nodeName === 'P') && (textContent.search('❌') > -1) ){
     showBooks(getNoReadBooks());
   }
 
-  if (event.target.dataset.type === 'deleteBtn'){
-    showBooks(deleteBook(event.target.dataset.idbook));
+  if (type === 'deleteBtn'){
+    showBooks(deleteBook(idbook));
   }
 
-  if (event.target.dataset.type === 'thumbnail'){
-    showPopup (event.target.dataset.popup);
+  if (type === 'thumbnail'){
+    showPopup (popup);
   }
 
+  if (type === 'editBtn'){
+    fillBookForm(idbook);
+    addBookBtn.classList.add('hide');
+    updateBookBtn.classList. remove('hide');
+  }
+
+}
+
+function addBookForm(event){
+
+  let id = Data.now();
+  let book = new Book (id, title.value, author.value, alreadyRead.cheked, imageUrl.value, imageUrlGr.value);
+
+  showBooks(addBook(book));
+
+  form.reset();
+
+  event.preventDefault();
+}
+
+function fillBookForm(id){
+  addEditForm.classList.toggle('open');
+
+
+  selectorBook = getBooksById(id);
+  let {title: editTitle, author: editAuthor, alreadyRead: editAlreadyRead, imageUrl: editImageURL, imageUrlGr: editImageUrlGr} = selectorBook;
+
+  title.value = editTitle;
+  author.value = editAuthor;
+  alreadyRead.cheked = editAlreadyRead;
+  imageUrl.value = editImageURL;
+  imageUrlGr.value = editImageUrlGr;
+
+
+}
+
+function updateBookForm(event){
+
+  let updateBook = {
+    id: selectorBook.id,
+    title: title.value,
+    author: author.value,
+    alreadyRead: alreadyRead.cheked,
+    imageUrl: imageUrl.value,
+    imageUrlGr: imageUrlGr.value,
+  }
+
+  showBooks(updateBooks(updateBook));
+  form.reset();
+  event.preventDefault();
 }
 
 /// Business Logic

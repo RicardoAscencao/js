@@ -1,7 +1,17 @@
-// Criar uma pagina Web, com um H1 formatado a sua escolha e texto: “A minha Lista de Livros”
-// Utilizando a Array de livros (em baixo), itere pela array e mostre o resultado na pagina web, de acordo com o print screen
 
-let livros = [
+export class Book {
+    constructor(id, title, author, alreadyRead, imageUrl, imageUrlGr){
+        this.id          = id;
+        this.title       = title;
+        this.author      = author;
+        this.alreadyRead = alreadyRead;
+        this.imageUrl    = imageUrl;
+        this.imageUrlGr  = imageUrlGr;
+        
+    }
+}
+
+export const livros = [
     {
         id:0,
         title: 'Angular Com Typescript',
